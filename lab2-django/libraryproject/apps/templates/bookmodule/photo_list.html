@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Photos Gallery</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .btn-add { background-color: #4CAF50; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Book Photos Gallery (Image Upload)</h1>
+    <p>
+        <a href="{% url 'photo_add' %}" class="btn-add">Upload New Photo</a>
+    </p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+        {% for photo in photos %}
+        <tr>
+            <td>{{ photo.id }}</td>
+            <td>{{ photo.title }}</td>
+            <td>
+                {% if photo.image %}
+                    <img src="{{ photo.image.url }}" alt="{{ photo.title }}" width="120">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'photo_edit' photo.id %}">Edit</a> |
+                <a href="{% url 'photo_delete' photo.id %}" style="color: red;" onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No photos uploaded yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

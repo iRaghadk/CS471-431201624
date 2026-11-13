@@ -1,0 +1,20 @@
+/* Links Styling */
+.green-link { display: block; background-color: lightgreen; color: red; padding: 15px; text-align: center; text-decoration: underline; margin-bottom: 5px; }
+.green-link:visited { color: red; }
+
+.gray-link { display: block; background-color: #666666; color: yellow; padding: 15px; text-align: center; text-decoration: underline; margin-bottom: 5px; }
+.gray-link:visited { color: yellow; }
+
+.black-link { display: block; background-color: black; color: white; padding: 15px; text-align: center; text-decoration: underline; }
+.black-link:visited { color: white; }
+
+/* Formatting Header */
+h1.format-header { background-color: #d4edda; color: #155724; padding: 10px 15px; font-family: serif; }
+
+/* Listing Header */
+h1.listing-header { background-color: #4b8b95; color: white; padding: 15px 20px; font-family: Arial, sans-serif; font-size: 28px; margin: 0; }
+
+/* Tables Styling */
+table { border-collapse: collapse; margin: 20px auto; font-family: Arial, sans-serif; }
+th, td { border: 1px solid black; padding: 8px 12px; text-align: center; }
+caption { margin-bottom: 8px; text-align: center; }

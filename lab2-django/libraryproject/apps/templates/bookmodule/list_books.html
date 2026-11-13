@@ -1,0 +1,48 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %} List of Books {% endblock title %}
+
+{% block stylesheets %}
+  <style>
+    h1 { color: green; }
+    h2 { color: lightskyblue; }
+    p { font-family: verdana; font-size: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+{% endblock stylesheets %}
+
+{% block content %}
+  <h1>List of Books</h1>
+  <p>
+    <a href="{% url 'lab10_part1_add' %}" class="btn-add">Add New Book</a>
+  </p>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.id }}</td>
+      <td>{{ book.title }}</td>
+      <td>${{ book.price }}</td>
+      <td>{{ book.quantity }}</td>
+      <td>
+        <a href="{% url 'lab10_part1_edit' book.id %}" class="btn-edit">Edit</a> |
+        <a href="{% url 'lab10_part1_delete' book.id %}" class="btn-delete" onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5">No books found in the database.</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock content %}
